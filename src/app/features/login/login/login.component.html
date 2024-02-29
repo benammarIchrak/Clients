@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+    <h2>Login</h2>
+    <form [formGroup]="loginform" class="login-form" (ngSubmit)="submitForm()">
+      <mat-form-field>
+        <input matInput type="text" id="username" formControlName="username" />
+        <mat-error *ngIf="loginform.controls['username'].invalid"
+          >Username is required</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          id="password"
+          formControlName="password"
+        />
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="loginform.controls['password'].invalid"
+          >Password is required</mat-error
+        >
+      </mat-form-field>
+
+      <button type="submit" [disabled]="this.loginform.invalid">Submit</button>
+    </form>
+    <button (click)="register()">Register</button>
+  </div>
+
+</div>
